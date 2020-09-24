@@ -11,7 +11,7 @@ namespace algorythms_lab_1
     {
         public int[] massiv;
         //tea
-
+        //warmth
         public Structure(int size)
         {
             massiv = new int[size];
