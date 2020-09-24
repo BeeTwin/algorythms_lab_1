@@ -10,8 +10,8 @@ namespace algorythms_lab_1
     class Structure
     {
         public int[] massiv;
-
-
+        //tea
+        //warmth
         public Structure(int size)
         {
             massiv = new int[size];
