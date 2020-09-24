@@ -8,7 +8,7 @@ namespace algorythms_lab_1
     {
         static void Main(string[] args)
         {
-            var iterationNumbers = new List<int> { 1, 2, 5, 10, 20, 50, 100, 150 };
+            var iterationNumbers = new List<int> { 1, 2, 5, 10, 20, 50, 100, 150, 500, 1000, 5000, 10000, 50000, 200000 };
 
             var result = Analyze(typeof(Structure), "Algorythm", iterationNumbers);
             for(var i = 0; i < iterationNumbers.Count; i++)

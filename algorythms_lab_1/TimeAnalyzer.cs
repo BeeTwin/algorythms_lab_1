@@ -25,17 +25,24 @@ namespace algorythms_lab_1
             var stopwatch = new Stopwatch();
             var iterations = 10.0;
             double timeInSeconds;
-            var arr = new object[] { };          
+            var arr = new object[] { };
+            object structure;
             foreach (var num in Sizes)
             {
-                var structure = Constructor.Invoke(new object[] { num });
-                for(var i = 0; i < iterations; i++)
+                for (var i = 0; i < iterations; i++)
+                {
+                    structure = Constructor.Invoke(new object[] { num });
                     Algorythm.Invoke(structure, arr); // "разгоночные" прогоны алгоритма
+                }
 
-                stopwatch.Restart();
-                for(var i = 0; i < iterations; i++)
+                stopwatch.Reset();
+                for (var i = 0; i < iterations; i++)
+                {
+                    structure = Constructor.Invoke(new object[] { num });
+                    stopwatch.Start();
                     Algorythm.Invoke(structure, arr);
-                stopwatch.Stop();
+                    stopwatch.Stop();
+                }
 
                 timeInSeconds = stopwatch.Elapsed.TotalSeconds / iterations;
                 result.Add(timeInSeconds);

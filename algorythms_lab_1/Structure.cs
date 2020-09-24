@@ -21,8 +21,7 @@ namespace algorythms_lab_1
 
         public void Algorythm()
         {
-            massiv.OrderBy(x => x);
-            Thread.Sleep(massiv.Length);
+            massiv.OrderBy(x => x).ToArray().ToArray();
         }
     }
 }
