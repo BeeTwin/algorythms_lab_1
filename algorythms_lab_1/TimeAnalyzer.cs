@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
-namespace algorythms_lab_1
-{
+namespace algorythms_lab_1 //love
+{                          //kindness
     class TimeAnalyzer
     { 
         public MethodInfo Algorythm;
