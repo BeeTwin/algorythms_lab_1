@@ -10,7 +10,7 @@ namespace algorythms_lab_1
     class Structure
     {
         public int[] massiv;
-
+        //tea
 
         public Structure(int size)
         {
