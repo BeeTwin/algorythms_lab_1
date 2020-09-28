@@ -1,53 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace algorythms_lab_1 //love
 {                          //kindness
     class TimeAnalyzer
-    { 
-        public MethodInfo Algorythm;
-        public ConstructorInfo Constructor;
-        public List<int> Sizes;
+    {
+        public TestingStructure TestingStructure;
 
-        public TimeAnalyzer(MethodInfo algorythm, ConstructorInfo constructor, List<int> iterationNumbers)
+        public TimeAnalyzer(TestingStructure testingStructure)
         {
-            Algorythm = algorythm;
-            Constructor = constructor;
-            Sizes = iterationNumbers;
+            TestingStructure = testingStructure;
         }
 
-        public List<double> Analyze()
-        {
-            var result = new List<double>();
+        public double Analyze()
+        {         
             var stopwatch = new Stopwatch();
-            var iterations = 10.0;
-            double timeInSeconds;
-            var arr = new object[] { };
-            object structure;
-            foreach (var num in Sizes)
+            var iterations = 100.0;
+
+            stopwatch.Reset();
+            for (var i = 0; i < iterations; i++)
             {
-                for (var i = 0; i < iterations; i++)
-                {
-                    structure = Constructor.Invoke(new object[] { num });
-                    Algorythm.Invoke(structure, arr); // "разгоночные" прогоны алгоритма
-                }
-
-                stopwatch.Reset();
-                for (var i = 0; i < iterations; i++)
-                {
-                    structure = Constructor.Invoke(new object[] { num });
-                    stopwatch.Start();
-                    Algorythm.Invoke(structure, arr);
-                    stopwatch.Stop();
-                }
-
-                timeInSeconds = stopwatch.Elapsed.TotalSeconds / iterations;
-                result.Add(timeInSeconds);
+                for(var j = 0; j < iterations; j++)
+                    TestingStructure.Test();
+                stopwatch.Start();
+                TestingStructure.Test();
+                stopwatch.Stop();
             }
-            return result;
+
+            return stopwatch.Elapsed.TotalSeconds / iterations;          
         }
     }
 }
