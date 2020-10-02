@@ -14,13 +14,13 @@ namespace algorythms_lab_1 //love
         public double Analyze()
         {         
             var stopwatch = new Stopwatch();
-            var iterations = 100.0;
+            var iterations = 10.0;
 
-            stopwatch.Reset();
+            for (var j = 0; j < iterations; j++)
+                TestingStructure.Test();
+
             for (var i = 0; i < iterations; i++)
             {
-                for(var j = 0; j < iterations; j++)
-                    TestingStructure.Test();
                 stopwatch.Start();
                 TestingStructure.Test();
                 stopwatch.Stop();

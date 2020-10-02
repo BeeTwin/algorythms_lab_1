@@ -9,7 +9,7 @@ namespace algorythms_lab_1
     {
         static void Main(string[] args)
         {
-            var iterationNumbers = new List<int> { 1, 2, 5, 10, 20, 50, 100, 150, 500, 1000, 5000, 10000, 50000, 200000 };
+            var iterationNumbers = new List<int> { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000 };
 
             foreach(var number in iterationNumbers)
             {
@@ -22,7 +22,12 @@ namespace algorythms_lab_1
                 var analyzer = new TimeAnalyzer(testingStructure);
 
                 Out(number, Math.Round(analyzer.Analyze(), 10));
-            }   
+            }
+
+            ForegroundColor = ConsoleColor.Green;
+            WriteLine("Analyzation ended successfully.");
+            ResetColor();
+            ReadKey();
         }
 
         static void Out(int number, double time)
