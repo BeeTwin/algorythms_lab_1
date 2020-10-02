@@ -27,14 +27,14 @@ namespace algorythms_lab_1
             var comp = value.CompareTo(Head);
 
             if (comp > 0)
-                _Add(ref Right, value);
+                Add(ref Right, value);
             else if (comp < 0)
-                _Add(ref Left, value);
+                Add(ref Left, value);
             else
                 throw new ArgumentException("The value must be unique.");
         }
 
-        private void _Add(ref BinaryTree<T> node, T value)
+        private void Add(ref BinaryTree<T> node, T value)
         {
             if (node != null)            
                 node.Add(value);
