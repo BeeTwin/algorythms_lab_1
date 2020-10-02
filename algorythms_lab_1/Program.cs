@@ -60,8 +60,15 @@ namespace algorythms_lab_1
             a.Add(3);
             a.Add(2);
             a.Add(9);
-            a.Add(2);
-
+            a.Add(11);
+            a.Add(12);
+            a.Add(4);
+            a.Add(54);
+            a.Add(788);
+            a.Add(int.MaxValue);
+            var c = a.Contains(7);
+            var c2 = a.Contains(20);
+            var c1 = a.Contains(13);
         }
     }
 }

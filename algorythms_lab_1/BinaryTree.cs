@@ -46,5 +46,21 @@ namespace algorythms_lab_1
         }
 
         public override string ToString() => Head.ToString();
+
+        public bool Contains(T value)
+        {
+            var comp = value.CompareTo(Head);
+            if (comp > 0)
+                return Right?.Contains(value) ?? false;
+            else if (comp < 0)
+                return Left?.Contains(value) ?? false;
+            return true;
+        }
+
+        public void Remove(T value)
+        { 
+            //if(this.Contains(value))
+
+        }
     }
 }
