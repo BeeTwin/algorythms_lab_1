@@ -10,10 +10,12 @@ namespace algorythms_lab_1
         public T Head;
         public BinaryTree<T> Right;
         public BinaryTree<T> Left;
+        public int Count;
 
         public BinaryTree(T head)
         {
             Head = head;
+            Count = 1;
         }
 
         public BinaryTree(T head, BinaryTree<T> right, BinaryTree<T> left)
@@ -21,18 +23,23 @@ namespace algorythms_lab_1
         {
             Right = right;
             Left = left;
+            Count += right.Count + left.Count;
         }
 
         public bool Add(T value)
         {
             var comp = value.CompareTo(Head);
 
+            Count++;
             if (comp > 0)
                 return Add(ref Right, value);
             else if (comp < 0)
                 return Add(ref Left, value);
             else
+            {
+                Count--;
                 return false;
+            }
         }
         private bool Add(ref BinaryTree<T> node, T value)
         {

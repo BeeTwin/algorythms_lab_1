@@ -25,7 +25,7 @@ namespace algorythms_lab_1
                 var testingStructure = new TestingStructure(
                     typeof(BinaryTree<int>),
                     bt,
-                    "Add",
+                    "Contains",
                     new object[] { new Random().Next(int.MinValue, int.MaxValue) });
 
                 var analyzer = new TimeAnalyzer(testingStructure);
