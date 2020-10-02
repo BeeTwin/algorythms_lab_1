@@ -28,13 +28,13 @@ namespace algorythms_lab_1
             var comp = value.CompareTo(Head);
 
             if (comp > 0)
-                return _Add(ref Right, value);
+                return Add(ref Right, value);
             else if (comp < 0)
-                return _Add(ref Left, value);
+                return Add(ref Left, value);
             else
                 return false;
         }
-        private bool _Add(ref BinaryTree<T> node, T value)
+        private bool Add(ref BinaryTree<T> node, T value)
         {
             if (node != null)
                 return node.Add(value);
