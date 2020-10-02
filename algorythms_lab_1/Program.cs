@@ -9,9 +9,12 @@ namespace algorythms_lab_1
     {
         static void Main(string[] args)
         {
+            Temp();
+
+
             var iterationNumbers = new List<int> { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000 };
 
-            foreach(var number in iterationNumbers)
+            foreach (var number in iterationNumbers)
             {
                 var testingStructure = new TestingStructure(
                     typeof(Temp),
@@ -40,6 +43,27 @@ namespace algorythms_lab_1
             ForegroundColor = ConsoleColor.Red;
             WriteLine($"{time}");
             ResetColor();
+        }
+
+        static void Temp()
+        {
+            var a = new BinaryTree<int>(7);
+            a.Add(2);
+            a.Add(10);
+            a.Add(6);
+            a.Add(3);
+            a.Add(20);
+            a.Add(1);
+            a.Add(8);
+            a.Add(21);
+            a.Add(9);
+            a.Add(11);
+            a.Add(12);
+            a.Add(4);
+            a.Add(54);
+            a.Add(788);
+            a.Add(int.MaxValue);
+            a.Add(8);
         }
     }
 }
