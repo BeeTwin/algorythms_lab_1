@@ -27,6 +27,17 @@ namespace algorythms_lab_1
                         .Invoke(constructorArguments);
         }
 
+        public TestingStructure(
+            Type type,
+            object testingStructure,
+            string testingAlgorythm, 
+            object[] methodArguments)
+        {
+            _testingStructure = testingStructure;
+            _testingAlgorythm = type.GetMethod(testingAlgorythm);
+            _methodArguments = methodArguments;
+        }
+
         public void Test()
         {
             _testingAlgorythm.Invoke(_testingStructure, _methodArguments);

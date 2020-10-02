@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace algorythms_lab_1
@@ -22,24 +23,26 @@ namespace algorythms_lab_1
             Left = left;
         }
 
-        public void Add(T value)
+        public bool Add(T value)
         {
             var comp = value.CompareTo(Head);
 
             if (comp > 0)
-                Add(ref Right, value);
+                return _Add(ref Right, value);
             else if (comp < 0)
-                Add(ref Left, value);
+                return _Add(ref Left, value);
             else
-                throw new ArgumentException("The value must be unique.");
+                return false;
         }
-
-        private void Add(ref BinaryTree<T> node, T value)
+        private bool _Add(ref BinaryTree<T> node, T value)
         {
-            if (node != null)            
-                node.Add(value);
+            if (node != null)
+                return node.Add(value);
             else
+            {
                 node = new BinaryTree<T>(value);
+                return true;
+            }
         }
 
         public override string ToString() => Head.ToString();

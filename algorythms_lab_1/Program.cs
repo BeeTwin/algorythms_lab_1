@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using static System.Console;
 
 namespace algorythms_lab_1
@@ -9,18 +10,23 @@ namespace algorythms_lab_1
     {
         static void Main(string[] args)
         {
-            Temp();
+            //Temp();
 
 
             var iterationNumbers = new List<int> { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000 };
 
             foreach (var number in iterationNumbers)
             {
+                var bt = new BinaryTree<int>(new Random().Next(int.MinValue, int.MaxValue));
+                for (var i = 0; i < number; i++)
+                    while (!bt.Add(new Random().Next(int.MinValue, int.MaxValue)))
+                        bt.Add(new Random().Next(int.MinValue, int.MaxValue));
+
                 var testingStructure = new TestingStructure(
-                    typeof(Temp),
-                    "Tempo",
-                    new object[] { number },
-                    new object[] { });
+                    typeof(BinaryTree<int>),
+                    bt,
+                    "Add",
+                    new object[] { new Random().Next(int.MinValue, int.MaxValue) });
 
                 var analyzer = new TimeAnalyzer(testingStructure);
 
@@ -48,22 +54,14 @@ namespace algorythms_lab_1
         static void Temp()
         {
             var a = new BinaryTree<int>(7);
-            a.Add(2);
-            a.Add(10);
-            a.Add(6);
-            a.Add(3);
-            a.Add(20);
             a.Add(1);
-            a.Add(8);
-            a.Add(21);
-            a.Add(9);
-            a.Add(11);
-            a.Add(12);
+            a.Add(10);
             a.Add(4);
-            a.Add(54);
-            a.Add(788);
-            a.Add(int.MaxValue);
-            a.Add(8);
+            a.Add(3);
+            a.Add(2);
+            a.Add(9);
+            a.Add(2);
+
         }
     }
 }
