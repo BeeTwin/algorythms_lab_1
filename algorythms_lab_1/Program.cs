@@ -10,7 +10,7 @@ namespace algorythms_lab_1
     {
         static void Main(string[] args)
         {
-            //Temp();
+            Temp();
 
 
             var iterationNumbers = new List<int> { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000 };
@@ -19,8 +19,7 @@ namespace algorythms_lab_1
             {
                 var bt = new BinaryTree<int>(new Random().Next(int.MinValue, int.MaxValue));
                 for (var i = 0; i < number; i++)
-                    while (!bt.Add(new Random().Next(int.MinValue, int.MaxValue)))
-                        bt.Add(new Random().Next(int.MinValue, int.MaxValue));
+                    bt.Add(new Random().Next(int.MinValue, int.MaxValue));
 
                 var testingStructure = new TestingStructure(
                     typeof(BinaryTree<int>),
@@ -54,7 +53,13 @@ namespace algorythms_lab_1
         static void Temp()
         {
             var a = new BinaryTree<int>(7);
+            var a2 = new BinaryTree<int>(10);
+            var a3 = new BinaryTree<int>(1);
+            var a4 = new BinaryTree<int>(7, a2, a3);
             a.Add(1);
+            a.Add(10);
+            a.Add(10);
+            a.Add(10);
             a.Add(10);
             a.Add(4);
             a.Add(3);
@@ -69,6 +74,8 @@ namespace algorythms_lab_1
             var c = a.Contains(7);
             var c2 = a.Contains(20);
             var c1 = a.Contains(13);
+            a.Remove(10);
+            var c5e = a.Contains(11);
         }
     }
 }
