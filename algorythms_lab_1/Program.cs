@@ -13,19 +13,26 @@ namespace algorythms_lab_1
             Temp();
 
 
-            var iterationNumbers = new List<int> { 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000 };
+            var iterationNumbers = new List<int> 
+            { 
+                100, 10000, 1000000
+            };
 
             foreach (var number in iterationNumbers)
             {
-                var bt = new BinaryTree<int>(new Random().Next(int.MinValue, int.MaxValue));
+                var btAverage = new GFG();
                 for (var i = 0; i < number; i++)
-                    bt.Add(new Random().Next(int.MinValue, int.MaxValue));
+                {
+                    btAverage.insert(i);
+                }
 
-                var testingStructure = new TestingStructure(
-                    typeof(BinaryTree<int>),
-                    bt,
-                    "Contains",
-                    new object[] { new Random().Next(int.MinValue, int.MaxValue) });
+
+
+                var testingStructure = new TestingStructure(    
+                    typeof(GFG),
+                    btAverage,
+                    "ifNodeExists",
+                    new object[] { btAverage.root, number + 1});
 
                 var analyzer = new TimeAnalyzer(testingStructure);
 

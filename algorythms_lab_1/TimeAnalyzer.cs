@@ -14,7 +14,7 @@ namespace algorythms_lab_1 //love
         public double Analyze()
         {         
             var stopwatch = new Stopwatch();
-            var iterations = 10.0;
+            var iterations = 20.0;
 
             for (var j = 0; j < iterations; j++)
                 TestingStructure.Test();
@@ -26,7 +26,7 @@ namespace algorythms_lab_1 //love
                 stopwatch.Stop();
             }
 
-            return stopwatch.Elapsed.TotalSeconds / iterations;          
+            return stopwatch.Elapsed.TotalMilliseconds / iterations;          
         }
     }
 }

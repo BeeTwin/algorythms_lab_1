@@ -16,7 +16,8 @@ namespace algorythms_lab_1
             set 
             { 
                 _right = value; 
-                value.Parent = this; 
+                if(value != null)
+                    value.Parent = this; 
             } 
         }
 
@@ -26,9 +27,10 @@ namespace algorythms_lab_1
             get => _left; 
             set 
             { 
-                _left = value; 
-                value.Parent = this; 
-            } 
+                _left = value;
+                if (value != null)
+                    value.Parent = this;
+            }
         }
 
         public BinaryTree<T> Parent;
@@ -96,20 +98,20 @@ namespace algorythms_lab_1
 
         public bool Remove(T value)
         {
-            var f = Find(value);
-            if (f == null)
+            var removing = Find(value);
+            if (removing == null)
                 return false;
 
-            var rightMin = f.Right.Min();
-            var left = f.Left;
+            var rightMin = removing.Right?.Min() ?? removing;
+            var left = removing.Left;
             rightMin.Left = left;
-            var p = f.Parent;
+            var parent = removing.Parent;
 
-            var cmp = f.Head.CompareTo(p.Head);
+            var cmp = removing.Head.CompareTo(parent.Head);
             if (cmp >= 0)
-                p.Right = f.Right;
-            else if (cmp < 0)
-                p.Left = f.Right;
+                parent.Right = removing.Right;
+            else
+                parent.Left = removing.Right;
 
             return true;
         }
