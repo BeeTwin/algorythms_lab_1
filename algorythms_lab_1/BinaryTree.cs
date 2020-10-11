@@ -174,7 +174,18 @@ namespace algorythms_lab_1
 
         public void RemoveNR(T value)
         {
+            var removing = FindNR(value);
 
+            var rightMin = removing.Right?.MinNR() ?? removing;
+            var left = removing.Left;
+            rightMin.Left = left;
+            var parent = removing.Parent;
+
+            var cmp = removing.Head.CompareTo(parent.Head);
+            if (cmp >= 0)
+                parent.Right = removing.Right;
+            else
+                parent.Left = removing.Right;
         }
     }
 }

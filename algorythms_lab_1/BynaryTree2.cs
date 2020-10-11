@@ -27,9 +27,20 @@ namespace algorythms_lab_1
 		Node root;
 
 		// Constructor 
-		public BinarySearchTree()
+		public BinarySearchTree(int value)
 		{
-			root = null;
+			AddNRBinarySearchTree(value);
+		}
+
+		public void AddNRBinarySearchTree(int value)
+		{
+			var goal = new BinarySearchTree(value).root;
+			var currentNode = root;
+			while (currentNode != goal)
+				if (value.CompareTo(currentNode.key) >= 0)
+					currentNode = (currentNode.right ??= goal);
+				else
+					currentNode = (currentNode.left ??= goal);
 		}
 
 		// This method mainly calls deleteRec() 
@@ -144,6 +155,11 @@ namespace algorythms_lab_1
 			}
 		};
 
+		public GFG(int value)
+        {
+			AddNRGFG(value);
+        }
+
 		// Function to traverse the tree in preorder  
 		// and check if the given node exists in it  
 		public bool ifNodeExists(Node node, int key)
@@ -188,6 +204,17 @@ namespace algorythms_lab_1
 
 			/* return the (unchanged) node pointer */
 			return root;
+		}
+
+		public void AddNRGFG(int value)
+        {
+			var goal = new GFG(value).root;
+			var currentNode = root;
+			while (currentNode != goal)
+				if (value.CompareTo(currentNode.key) >= 0)
+					currentNode = (currentNode.right ??= goal);
+				else
+					currentNode = (currentNode.left ??= goal);
 		}
 
 	}

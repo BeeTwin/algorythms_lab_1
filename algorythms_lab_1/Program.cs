@@ -20,10 +20,10 @@ namespace algorythms_lab_1
 
             foreach (var number in iterationNumbers)
             {
-                var btAverage = new GFG();
+                var btAverage = new GFG(0);
                 for (var i = 0; i < number; i++)
                 {
-                    btAverage.insert(i);
+                    btAverage.AddNRGFG(i);
                 }
 
 
@@ -83,6 +83,88 @@ namespace algorythms_lab_1
             var c1 = a.Contains(13);
             a.Remove(10);
             var c5e = a.Contains(11);
+        }
+
+        //0 - лучший случай, 1 - средний случай, 2 - худший случай
+        public GFG InitializeGFG(int idenify, int size) 
+        {
+            var gFG = new GFG(0);
+            if(idenify == 0)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    gFG.AddNRGFG(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if(idenify == 1)
+            {
+                for(var i = 0; i < size - 1; i++)
+                {
+                    gFG.AddNRGFG(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if(idenify == 2)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    gFG.AddNRGFG(i);
+                }
+            }
+            return gFG;
+        }
+
+        public BinarySearchTree InitializeBinarySearchTree(int idenify, int size)
+        {
+            var bST = new BinarySearchTree(0);
+            if (idenify == 0)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    bST.AddNRBinarySearchTree(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if (idenify == 1)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    bST.AddNRBinarySearchTree(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if (idenify == 2)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                   bST.AddNRBinarySearchTree(i);
+                }
+            }
+            return bST;
+        }
+
+        public BinaryTree<int> InitializeBinaryTree(int idenify, int size)
+        {
+            var bT = new BinaryTree<int>(0);
+            if (idenify == 0)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    bT.AddNR(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if (idenify == 1)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    bT.AddNR(new Random().Next(int.MinValue, int.MaxValue));
+                }
+            }
+            else if (idenify == 2)
+            {
+                for (var i = 0; i < size - 1; i++)
+                {
+                    bT.AddNR(i);
+                }
+            }
+            return bT;
         }
     }
 }
