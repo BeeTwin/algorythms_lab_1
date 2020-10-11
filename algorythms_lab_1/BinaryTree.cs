@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace algorythms_lab_1
 {
@@ -115,8 +117,30 @@ namespace algorythms_lab_1
             }
         }
 
+        public BinaryTree<T> FindNR2(T value)
+        {
+            var currentNode = this;
+            int cmp;
+            while (currentNode != null)
+                if ((cmp = value.CompareTo(currentNode.Head)) > 0)
+                    currentNode = currentNode.Right;
+                else if (cmp < 0)
+                    currentNode = currentNode.Left;
+                else
+                    break;
+            return currentNode;
+        }
+
 
         public BinaryTree<T> Min() => Left?.Min() ?? this;
+
+        public BinaryTree<T> MinNR()
+        {
+            var currentNode = this;
+            while (currentNode.Left != null)
+                currentNode = currentNode.Left;
+            return currentNode;
+        }
 
         public BinaryTree<T> Max() => Right?.Max() ?? this;
 
@@ -139,6 +163,11 @@ namespace algorythms_lab_1
                 parent.Left = removing.Right;
 
             return true;
+        }
+
+        public void RemoveNR(T value)
+        {
+
         }
     }
 }
