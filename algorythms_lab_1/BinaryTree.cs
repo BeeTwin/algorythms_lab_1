@@ -8,6 +8,7 @@ namespace algorythms_lab_1
     public class BinaryTree<T> where T : IComparable
     {
         public T Head;
+        public BinaryTree<T> Parent;
 
         private BinaryTree<T> _right;
         public BinaryTree<T> Right 
@@ -33,13 +34,9 @@ namespace algorythms_lab_1
             }
         }
 
-        public BinaryTree<T> Parent;
-        public int Count;
-
         public BinaryTree(T head)
         {
             Head = head;
-            Count = 1;
         }
 
         private BinaryTree(T head, BinaryTree<T> parent)
@@ -55,14 +52,23 @@ namespace algorythms_lab_1
             Right.Parent = this;
             Left = left;
             Left.Parent = this;
-            Count += right.Count + left.Count;
+        }
+
+        public void AddNR(T value)
+        {
+            var goal = new BinaryTree<T>(value);
+            var currentNode = this;
+            while(currentNode != goal)
+                if (value.CompareTo(currentNode.Head) >= 0)
+                    currentNode = (currentNode.Right ??= goal);
+                else
+                    currentNode = (currentNode.Left ??= goal);
         }
 
         public void Add(T value)
         {
             var comp = value.CompareTo(Head);
 
-            Count++;
             if (comp >= 0)
                 Add(ref _right, value);
             else
