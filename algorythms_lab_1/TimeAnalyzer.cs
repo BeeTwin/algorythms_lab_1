@@ -11,22 +11,23 @@ namespace algorythms_lab_1 //love
             TestingStructure = testingStructure;
         }
 
-        public double Analyze()
+        public double Analyze(object[] args, bool refreshNeeded)
         {         
             var stopwatch = new Stopwatch();
-            var iterations = 20.0;
 
-            for (var j = 0; j < iterations; j++)
-                TestingStructure.Test();
+            TestingStructure.Test(args);
+            TestingStructure.Test(args);
+            TestingStructure.Test(args);
+            TestingStructure.Test(args);
 
-            for (var i = 0; i < iterations; i++)
-            {
-                stopwatch.Start();
-                TestingStructure.Test();
-                stopwatch.Stop();
-            }
+            stopwatch.Start();
+            TestingStructure.Test(args);
+            stopwatch.Stop();
 
-            return stopwatch.Elapsed.TotalMilliseconds / iterations;          
+            if (refreshNeeded)
+                TestingStructure.Refresh();
+
+            return stopwatch.Elapsed.TotalMilliseconds;          
         }
     }
 }

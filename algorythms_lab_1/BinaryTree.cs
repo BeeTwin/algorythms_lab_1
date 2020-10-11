@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
 
 namespace algorythms_lab_1
 {
@@ -101,7 +96,7 @@ namespace algorythms_lab_1
 
         public bool ContainsNR(T value) => FindNR(value) != null;
 
-        public BinaryTree<T> FindNR(T value)
+        public BinaryTree<T> FindNR2(T value)
         {
             var node = this;
             while(node != null)
@@ -117,7 +112,7 @@ namespace algorythms_lab_1
             return node;
         }
 
-        public BinaryTree<T> FindNR2(T value)
+        public BinaryTree<T> FindNR(T value)
         {
             var currentNode = this;
             int cmp;
@@ -146,17 +141,17 @@ namespace algorythms_lab_1
 
         public BinaryTree<T> MaxNR()
         {
-            var node = this;
-            while (node.Right != null)
-                node = node.Right;
-            return node;
+            var currentNode = this;
+            while (currentNode.Right != null)
+                currentNode = currentNode.Right;
+            return currentNode;
         }
 
-        public bool Remove(T value)
+        public void Remove(T value)
         {
             var removing = Find(value);
             if (removing == null)
-                return false;
+                return;
 
             var rightMin = removing.Right?.Min() ?? removing;
             var left = removing.Left;
@@ -168,13 +163,21 @@ namespace algorythms_lab_1
                 parent.Right = removing.Right;
             else
                 parent.Left = removing.Right;
-
-            return true;
         }
 
         public void RemoveNR(T value)
         {
+            var removing = FindNR(value);
+            if (removing == null)
+                return;
 
+            (removing.Right?.MinNR() ?? removing).Left = removing.Left;
+
+            var cmp = removing.Head.CompareTo(removing.Parent.Head);
+            if (cmp >= 0)
+                removing.Parent.Right = removing.Right;
+            else
+                removing.Parent.Left = removing.Right;
         }
     }
 }

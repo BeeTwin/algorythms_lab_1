@@ -7,40 +7,41 @@ namespace algorythms_lab_1
     public class TestingStructure
     {
         private MethodInfo _testingAlgorythm;
-        private object[] _methodArguments;
         private object _testingStructure;
+
+        private Type _type;
+        object[] _constructorArguments;
         
         //tea
         //warmth
         public TestingStructure(
             Type testingStructure, 
             string testingAlgorythm, 
-            object[] constructorArguments, 
-            object[] methodArguments)
+            object[] constructorArguments)
         {
             _testingAlgorythm = testingStructure.GetMethod(testingAlgorythm);
-            _methodArguments = methodArguments;
-            _testingStructure = testingStructure.GetConstructor(
-                constructorArguments
-                    .Select(x => x.GetType())
-                    .ToArray())
-                        .Invoke(constructorArguments);
+            _type = testingStructure;
+            _constructorArguments = constructorArguments;
+            Refresh();
         }
 
         public TestingStructure(
             Type type,
             object testingStructure,
-            string testingAlgorythm, 
-            object[] methodArguments)
+            string testingAlgorythm)
         {
             _testingStructure = testingStructure;
             _testingAlgorythm = type.GetMethod(testingAlgorythm);
-            _methodArguments = methodArguments;
         }
 
-        public void Test()
+        public void Test(object[] args)
         {
-            _testingAlgorythm.Invoke(_testingStructure, _methodArguments);
+            _testingAlgorythm.Invoke(_testingStructure, args);
+        }
+
+        public void Refresh()
+        {
+
         }
     }
 }
