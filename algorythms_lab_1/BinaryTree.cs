@@ -102,17 +102,17 @@ namespace algorythms_lab_1
         public BinaryTree<T> FindNR(T value)
         {
             var node = this;
-            while(true)
+            while(node != null)
             {
                 var comp = value.CompareTo(node.Head);
-                if(comp == 0)
-                    return node;
-                else if(comp > 0)
+                if (comp == 0)
+                    break;
+                else if (comp > 0)
                     node = node.Right;
                 else
                     node = node.Left;
-
             }
+            return node;
         }
 
 
@@ -120,6 +120,13 @@ namespace algorythms_lab_1
 
         public BinaryTree<T> Max() => Right?.Max() ?? this;
 
+        public BinaryTree<T> MaxNR()
+        {
+            var node = this;
+            while (node.Right != null)
+                node = node.Right;
+            return node;
+        }
 
         public bool Remove(T value)
         {
