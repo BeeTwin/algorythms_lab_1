@@ -106,7 +106,7 @@ namespace algorythms_lab_1
             var node = this;
             while(true)
             {
-                var comp = value.CompareTo(Head);
+                var comp = value.CompareTo(node.Head);
                 if(comp == 0)
                     return node;
                 else if(comp > 0)
