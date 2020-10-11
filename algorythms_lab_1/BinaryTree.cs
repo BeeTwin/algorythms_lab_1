@@ -91,6 +91,25 @@ namespace algorythms_lab_1
             return this;
         }
 
+        public bool ContainsNR(T value) => FindNR(value) != null;
+
+        public BinaryTree<T> FindNR(T value)
+        {
+            var node = this;
+            while(true)
+            {
+                var comp = value.CompareTo(Head);
+                if(comp == 0)
+                    return node;
+                else if(comp > 0)
+                    node = node.Right;
+                else
+                    node = node.Left;
+
+            }
+        }
+
+
         public BinaryTree<T> Min() => Left?.Min() ?? this;
 
         public BinaryTree<T> Max() => Right?.Max() ?? this;
