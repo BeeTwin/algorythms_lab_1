@@ -84,57 +84,19 @@ namespace algorythms_lab_1
         }
 
         //0 - лучший случай, 1 - средний случай, 2 - худший случай
-        public GFG InitializeGFG(int idenify, int size) 
-        {
-            var gFG = new GFG(0);
-            if(idenify == 0)
-            {
-                for (var i = 0; i < size - 1; i++)
-                {
-                    gFG.AddNRGFG(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
-            else if(idenify == 1)
-            {
-                for(var i = 0; i < size - 1; i++)
-                {
-                    gFG.AddNRGFG(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
-            else if(idenify == 2)
-            {
-                for (var i = 0; i < size - 1; i++)
-                {
-                    gFG.AddNRGFG(i);
-                }
-            }
-            return gFG;
-        }
 
         public BinarySearchTree InitializeBinarySearchTree(int idenify, int size)
         {
             var bST = new BinarySearchTree(0);
             if (idenify == 0)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                     bST.AddNRBinarySearchTree(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
             else if (idenify == 1)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                     bST.AddNRBinarySearchTree(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
             else if (idenify == 2)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                    bST.AddNRBinarySearchTree(i);
-                }
-            }
             return bST;
         }
 
@@ -142,26 +104,14 @@ namespace algorythms_lab_1
         {
             var bT = new BinaryTree<int>(0);
             if (idenify == 0)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                     bT.AddNR(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
             else if (idenify == 1)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                     bT.AddNR(new Random().Next(int.MinValue, int.MaxValue));
-                }
-            }
             else if (idenify == 2)
-            {
                 for (var i = 0; i < size - 1; i++)
-                {
                     bT.AddNR(i);
-                }
-            }
             return bT;
         }
     }
