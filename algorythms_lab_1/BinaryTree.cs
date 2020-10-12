@@ -46,9 +46,14 @@ namespace algorythms_lab_1
             : this(head)
         {
             Right = right;
-            Right.Parent = this;
             Left = left;
-            Left.Parent = this;
+        }
+
+        public BinaryTree(BinaryTree<T> bt)
+        {
+            Head = bt.Head;
+            _right = bt._right;
+            _left = bt._left;
         }
 
         public void AddNR(T value)

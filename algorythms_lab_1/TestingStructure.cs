@@ -8,40 +8,30 @@ namespace algorythms_lab_1
     {
         private MethodInfo _testingAlgorythm;
         private object _testingStructure;
-
+        private object _tSCopy;
         private Type _type;
-        object[] _constructorArguments;
         
         //tea
         //warmth
-        public TestingStructure(
-            Type testingStructure, 
-            string testingAlgorythm, 
-            object[] constructorArguments)
-        {
-            _testingAlgorythm = testingStructure.GetMethod(testingAlgorythm);
-            _type = testingStructure;
-            _constructorArguments = constructorArguments;
-            Refresh();
-        }
 
         public TestingStructure(
             Type type,
             object testingStructure,
             string testingAlgorythm)
         {
-            _testingStructure = testingStructure;
+            _type = type;
+            _testingStructure = Copy(testingStructure);
             _testingAlgorythm = type.GetMethod(testingAlgorythm);
+            _tSCopy = Copy(_testingStructure);
         }
 
-        public void Test(object[] args)
-        {
-            _testingAlgorythm.Invoke(_testingStructure, args);
-        }
+        public void Test(object[] args) 
+            => _testingAlgorythm.Invoke(_testingStructure, args);
 
-        public void Refresh()
-        {
+        public void Refresh() 
+            => _testingStructure = Copy(_tSCopy);
 
-        }
+        private object Copy(object obj) 
+            => _type.GetConstructor(new Type[] { _type }).Invoke(new object[] { obj });
     }
 }

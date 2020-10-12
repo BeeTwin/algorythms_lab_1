@@ -17,6 +17,7 @@ namespace algorythms_lab_1
 
         static void Main(string[] args)
         {
+            Temp();
             foreach (var count in _counts)
             {
                 var bt = new BinaryTree<int>(new Random().Next(int.MinValue, int.MaxValue));
@@ -24,7 +25,7 @@ namespace algorythms_lab_1
                     bt.AddNR(new Random().Next(int.MinValue, int.MaxValue));
 
                 var analyzer = new TimeAnalyzer(
-                    new TestingStructure(typeof(BinaryTree<int>), bt, "ContainsNR"));
+                    new TestingStructure(typeof(BinaryTree<int>), bt, "RemoveNR"));
                 Out(count, Math.Round(Analyze(analyzer), 10));
             }
 
@@ -59,28 +60,19 @@ namespace algorythms_lab_1
 
         static void Temp()
         {
-            var a = new BinaryTree<int>(7);
-            var a2 = new BinaryTree<int>(10);
-            var a3 = new BinaryTree<int>(1);
-            var a4 = new BinaryTree<int>(7, a2, a3);
-            a.AddNR(1);
-            a.AddNR(10);
-            a.AddNR(4);
-            a.AddNR(3);
-            a.AddNR(2);
-            a.AddNR(9);
-            a.AddNR(12);
-            a.AddNR(11);
-            a.AddNR(4);
-            a.AddNR(54);
-            a.AddNR(788);
-            a.AddNR(int.MaxValue);
-            var c = a.ContainsNR(7);
-            var c2 = a.ContainsNR(20);
-            var c1 = a.ContainsNR(13);
-            var c3 = a.ContainsNR(4);
-            a.RemoveNR(10);
-            var c5e = a.ContainsNR(11);
+            var a = new BinarySearchTree(7);
+            a.AddNRBinarySearchTree(1);
+            a.AddNRBinarySearchTree(2);
+            
+            var a14 = new TestingStructure(typeof(BinarySearchTree), a, "deleteKey");
+            a14.Test(new object[] { 1 });
+            a14.Refresh();
+            a14.Test(new object[] { 1 });
+            a14.Test(new object[] { 1 });
+            a14.Test(new object[] { 1 });
+            a14.Test(new object[] { 1 });
+            a14.Test(new object[] { 1 });
+            a14.Refresh();
         }
 
         //0 - лучший случай, 1 - средний случай, 2 - худший случай

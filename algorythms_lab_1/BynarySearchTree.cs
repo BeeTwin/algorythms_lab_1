@@ -16,14 +16,26 @@ namespace algorythms_lab_1
 				key = item;
 				left = right = null;
 			}
+
+			public Node(Node node)
+            {
+				key = node.key;
+				left = node.left;
+				right = node.right;
+            }
 		}
 
 		Node root;
 
 		public BinarySearchTree(int value)
 		{
-			AddNRBinarySearchTree(value);
+			root = new Node(value);
 		}
+
+		public BinarySearchTree(BinarySearchTree bst)
+        {
+			root = new Node(bst.root);
+        }
 
 		public void AddNRBinarySearchTree(int value)
 		{
