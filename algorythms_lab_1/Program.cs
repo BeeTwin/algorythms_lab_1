@@ -13,20 +13,20 @@ namespace algorythms_lab_1
         {
             100, 100, 100, 10000, 1000000
         };
+
         private static readonly float _iterations = 1000000;
 
         static void Main(string[] args)
         {
-            Temp();
+            //Temp();
             foreach (var count in _counts)
             {
-                var bt = new BinaryTree<int>(new Random().Next(int.MinValue, int.MaxValue));
-                for (var i = 0; i < count; i++)
-                    bt.AddNR(new Random().Next(int.MinValue, int.MaxValue));
+                var bt = Initializer.InitializeBinaryTree(Case.Best, count);
+                var caseItem = -1;
 
                 var analyzer = new TimeAnalyzer(
-                    new TestingStructure(typeof(BinaryTree<int>), bt, "RemoveNR"));
-                Out(count, Math.Round(Analyze(analyzer), 10));
+                    new TestingStructure(typeof(BinaryTree<int>), bt, "ContainsNR"));
+                Out(count, Math.Round(Analyze(analyzer, caseItem, false), 10));
             }
 
             ForegroundColor = ConsoleColor.Green;
@@ -35,13 +35,13 @@ namespace algorythms_lab_1
             ReadKey();
         }
 
-        private static double Analyze(TimeAnalyzer analyzer)
+        private static double Analyze(TimeAnalyzer analyzer, object arg, bool refreshNeeded)
         {
             double result = 0;
             for (var i = 0; i < _iterations; i++)
                 result += analyzer.Analyze(
-                    new object[] { new Random().Next(int.MinValue, int.MaxValue) },
-                    false);
+                    new object[] { arg },
+                    refreshNeeded);
 
             return result / _iterations;
         }
@@ -74,7 +74,5 @@ namespace algorythms_lab_1
             a14.Test(new object[] { 1 });
             a14.Refresh();
         }
-
-
     }
 }
