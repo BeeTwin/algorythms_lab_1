@@ -74,7 +74,5 @@ namespace algorythms_lab_1
             a14.Test(new object[] { 1 });
             a14.Refresh();
         }
-
-
     }
 }
