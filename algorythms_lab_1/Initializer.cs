@@ -39,6 +39,10 @@ namespace algorythms_lab_1
             switch (@case)
             {
                 case Case.Best:
+                    bT.AddNR(-1);
+                    for (var i = 0; i < size - 2; i++)
+                        bT.AddNR(i);
+                    break;
                 case Case.Average:
                     for (var i = 0; i < size - 1; i++)
                         bT.AddNR(new Random().Next(int.MinValue, int.MaxValue));

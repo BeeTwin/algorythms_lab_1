@@ -21,12 +21,12 @@ namespace algorythms_lab_1
             //Temp();
             foreach (var count in _counts)
             {
-                var bt = Initializer.InitializeBinaryTree(Case.Best, count);
-                var caseItem = -1;
+                var bt = Initializer.InitializeBinarySearchTree(Case.Worst, count);
+                var caseItem = int.MaxValue;
 
                 var analyzer = new TimeAnalyzer(
-                    new TestingStructure(typeof(BinaryTree<int>), bt, "ContainsNR"));
-                Out(count, Math.Round(Analyze(analyzer, caseItem, false), 10));
+                    new TestingStructure(typeof(BinarySearchTree), bt, "deleteKey"));
+                Out(count, Math.Round(Analyze(analyzer, caseItem, true), 10));
             }
 
             ForegroundColor = ConsoleColor.Green;
